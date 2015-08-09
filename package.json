@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "contextify": "^0.1.14",
+    "memory-fs": "^0.2.0",
+    "object-assign": "^3.0.0",
     "webpack": "^1.11.0"
   },
   "devDependencies": {
-    "jasmine": "^2.3.2"
+    "file-loader": "^0.8.4",
+    "jasmine": "^2.3.2",
+    "url-loader": "^0.5.6"
   }
 }
