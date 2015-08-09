@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "contextify": "^0.1.14",
+    "invariant": "^2.1.0",
     "memory-fs": "^0.2.0",
     "object-assign": "^3.0.0",
+    "path-is-absolute": "^1.0.0",
     "webpack": "^1.11.0"
   },
   "devDependencies": {
