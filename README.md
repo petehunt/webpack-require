@@ -3,8 +3,8 @@
 **WARNING:** this is beta software.
 
 This lets you `require()` a module in Node that needs to have a specific
-webpack config. This is useful server-side-rendering of a component that uses
-a webpack loader.
+webpack config. This is useful rendering a component that uses webpack
+loaders server-side in Node.js.
 
 ## How to use it
 
