@@ -22,6 +22,8 @@ webpackRequire(
     // Invoke factory() to actually get an instance of your module.
     // You can call it multiple times to get multiple independent copies
     // of your module (useful for multiple requests in a single process).
+    // Note that this is fairly performant, since the file is only parsed
+    // once even if you call factory() multiple times.
     var yourmodule = factory();
   }
 );
