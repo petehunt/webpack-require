@@ -14,7 +14,7 @@ var webpackRequire = require('webpack-require');
 webpackRequire(
   require('./path/to/webpack.config.js'),
   require.resolve('./path/to/yourmodule.js'),
-  function(err, factory) {
+  function(err, factory, stats, fs) {
     if (err) {
       console.error(err);
     }
@@ -25,6 +25,12 @@ webpackRequire(
     // Note that this is fairly performant, since the file is only parsed
     // once even if you call factory() multiple times.
     var yourmodule = factory();
+    
+    // You can inspect the build process by looking at the stats object
+    
+    // fs can be used to read static assets from the bundle. They are mounted
+    // in the root directory. This is useful for extracting a static CSS
+    // stylesheet with ExtractTextPlugin by doing: fs.readFileSync('/style.css')
   }
 );
 ```
