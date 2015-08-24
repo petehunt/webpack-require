@@ -8,7 +8,26 @@ describe('webpackRequire', function() {
       require('./app/webpack.config.js'),
       require.resolve('./app/component'),
       function(err, mod) {
-        expect(mod().indexOf('base64')).toBeGreaterThan(-1);
+        var text = mod();
+        expect(text.indexOf('base64')).toBeGreaterThan(-1);
+        expect(text.indexOf('webpack')).toBeGreaterThan(-1);
+        done();
+      }
+    );
+  });
+
+  it('shims', function(done) {
+    var stateful = require('./app/stateful');
+    stateful.value = 'node';
+
+    webpackRequire(
+      require('./app/webpack.config.js'),
+      require.resolve('./app/component'),
+      [require.resolve('./app/stateful')],
+      function(err, mod) {
+        var text = mod();
+        expect(text.indexOf('base64')).toBeGreaterThan(-1);
+        expect(text.indexOf('node')).toBeGreaterThan(-1);
         done();
       }
     );
