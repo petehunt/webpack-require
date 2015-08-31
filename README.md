@@ -43,9 +43,10 @@ detrimental server-side (i.e. optimization plugins).
 
 ## API docs
 
-`webpackRequire(webpackConfig, modulePath, [overrideModules], callback)`
+`webpackRequire(webpackConfig, modulePath, [overrideModules], [globals], callback)`
 
   * `webpackConfig`: the webpack config as a JavaScript object.
   * `modulePath`: the absolute path to the module you want to `require()`
   * `overrideModules`: optional array of absolute paths to modules that you do NOT want bundled. Instead, when these modules are required inside of the webpack bundle, a reference to the module as required by Node.js will be returned instead. This is useful when you have a stateful module, and you want to share that state between your Node.js code and your webpacked code. If that module is not included in this array, then when that module is required you'll get a fresh copy without the shared state. This array is also useful for sharing native modules, like `fs` with your webpack bundle.
+  * `globals`: optional object to serve as global scope
   * `callback(err, factory, stats, fs)`: callback that executes when the build process is complete. `factory` is a function that takes no arguments and returns a fresh copy of the required module. Multiple invocations of this function should be fairly inexpensive since parsing only happens once. `stats` is the webpack stats object and can return information about the build process (see the [webpack docs on stats](https://github.com/webpack/docs/wiki/node.js-api#stats)). `fs` is a mock file system module that you can use to read static assets like images from the bundle. All files are placed at the root (i.e. if your bundle outputs a `myImage.png` asset, you can use `fs.readFileSync('/myImage.png')` to read it).
