@@ -16,6 +16,21 @@ describe('webpackRequire', function() {
     );
   });
 
+  it('supports caching', function(done) {
+    webpackRequire(
+      require('./app/webpack.config.js'),
+      require.resolve('./app/component'),
+      function(err, originalMod) {
+        var serialized = JSON.stringify(originalMod.serialize());
+        var mod = webpackRequire.requireSerialized(JSON.parse(serialized));
+        var text = mod();
+        expect(text.indexOf('base64')).toBeGreaterThan(-1);
+        expect(text.indexOf('webpack')).toBeGreaterThan(-1);
+        done();
+      }
+    );
+  });
+
   it('has sick stack traces', function(done) {
     webpackRequire(
       require('./app/webpack.config.js'),
