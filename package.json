@@ -6,6 +6,10 @@
   "scripts": {
     "test": "jasmine"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petehunt/webpack-require.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
